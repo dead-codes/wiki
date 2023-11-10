@@ -1,0 +1,31 @@
+For gollum code, everything should fall under the existing MIT License.
+Alternative permissive licenses (such as BSD) for 3rd party dependencies are
+acceptable. For image assets in Gollum, CC BY or CC BY-SA is fine. Anything
+released under a copyleft license (for example GPL, AGPL, LGPL, MPL, EPL,
+etc.) is not permitted in gollum. Public domain, CC BY or CC BY-SA for code in
+gollum is not permitted.
+
+---
+
+The identicon.js code is used under the BSD license.
+
+https://github.com/stewartlord/identicon.js/blob/master/identicon.js
+https://github.com/stewartlord/identicon.js/blob/master/README.md
+  
+  lib/gollum/public/gollum/javascript/identicon.js
+
+---
+
+CSS Spinner by Franz Heidl is used under the MIT license.
+
+https://github.com/franzheidl/spinners
+
+  lib/gollum/public/gollum/stylesheets/_spinners.scss
+
+---
+
+ClipboardJS is used under the MIT license.
+
+https://github.com/zenorocha/clipboard.js
+
+  lib/gollum/public/gollum/javascript/clipboard.min.js

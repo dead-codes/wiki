@@ -1,0 +1,204 @@
+// Gollum v3 Template
+
+@import "_base", "_breakpoint", "_features";
+
+/* margin & padding reset*/
+* {
+  @include reset-box-leave-border;
+}
+
+img {
+  border: 0;
+}
+
+#footer {
+  margin-bottom: 7em;
+  clear: both;
+}
+
+#header-content .toc,
+#footer-content .toc,
+#sidebar-content .toc {
+  border: none;
+}
+
+#head .header-title {
+  font-size: 1.5em;
+
+  @include largemobile-breakpoint {
+    font-size: 32px;
+  }
+}
+
+// Header styling (link and edit icons) and header enumeration must be defined before primer is imported
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  $anchor-icon-size: 20px;
+
+  position: relative;
+
+  .anchor {
+    display: inline-block;
+    position: absolute;
+    margin-top: 0.1em;
+    width: $anchor-icon-size;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+
+    &:before {
+      content: url('data:image/svg+xml;utf8,<%= rocticon_css(:link) %>');
+    }
+
+    &:not(.edit) {
+      left: -(calc($anchor-icon-size/2));
+    }
+
+    &.edit {
+      margin-left: calc($anchor-icon-size/2);
+
+      &:before {
+        content: url('data:image/svg+xml;utf8,<%= rocticon_css(:pencil) %>');
+      }
+    }
+  }
+
+  &:hover > .anchor,
+  .anchor:focus {
+    opacity: 1;
+  }
+}
+
+.header-enum {
+  --header-enum-style: decimal;
+
+  h1 {
+    counter-increment: h1;
+    counter-reset: h2;
+
+    &:before {
+      content: counter(h1, var(--header-enum-style)) ". ";
+    }
+  }
+
+  h2 {
+    counter-increment: h2;
+    counter-reset: h3;
+
+    &:before {
+      content:
+        counter(h1, var(--header-enum-style))
+        "." counter(h2, var(--header-enum-style))
+        ". ";
+    }
+  }
+
+  h3 {
+    counter-reset: h4;
+    counter-increment: h3;
+
+    &:before {
+      content:
+        counter(h1, var(--header-enum-style))
+        "." counter(h2, var(--header-enum-style))
+        "." counter(h3, var(--header-enum-style))
+        ". ";
+    }
+  }
+
+  h4 {
+    counter-increment: h4;
+    counter-reset: h5;
+
+    &:before {
+      content:
+        counter(h1, var(--header-enum-style))
+        "." counter(h2, var(--header-enum-style))
+        "." counter(h3, var(--header-enum-style))
+        "." counter(h4, var(--header-enum-style))
+        ". ";
+    }
+  }
+
+  h5 {
+    counter-increment: h5;
+    counter-reset: h6;
+
+    &:before {
+      content:
+        counter(h1, var(--header-enum-style))
+        "." counter(h2, var(--header-enum-style))
+        "." counter(h3, var(--header-enum-style))
+        "." counter(h4, var(--header-enum-style))
+        "." counter(h5, var(--header-enum-style))
+        ". ";
+    }
+  }
+
+  h6 {
+    counter-increment: h6;
+
+    &:before {
+      content:
+        counter(h1, var(--header-enum-style))
+        "." counter(h2, var(--header-enum-style))
+        "." counter(h3, var(--header-enum-style))
+        "." counter(h4, var(--header-enum-style))
+        "." counter(h5, var(--header-enum-style))
+        "." counter(h6, var(--header-enum-style))
+        ". ";
+    }
+  }
+}
+
+div.pagination a.disabled {
+  pointer-events: none;
+}
+
+nav.actions {
+  scrollbar-width: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  ::webkit-scrollbar {
+    display: none;
+  }
+}
+
+.search-results {
+  .search-context li:nth-child(n+4) {
+    display: none;
+   }
+}
+
+/* `gollum`-provided CSS for the note and warning macros. */
+
+.flash::before {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.7em;
+  vertical-align: middle;
+  width: $gollum-icon-width;
+  height: $gollum-icon-height;
+  padding-bottom: 2px;
+}
+
+.flash.gollum-note::before {
+  content: url('data:image/svg+xml;utf8,<%= rocticon_css(:info) %>');
+}
+.flash.gollum-warning::before {
+  content: url('data:image/svg+xml;utf8,<%= rocticon_css(:alert) %>');
+}
+
+/* `gollum`-provided CSS for the default size of octicons. */
+.gollum-icon .octicon, .flash .octicon {
+    width: $gollum-icon-width;
+    height: $gollum-icon-height;
+    fill: $gollum-icon-fillcolor;
+}
+
+

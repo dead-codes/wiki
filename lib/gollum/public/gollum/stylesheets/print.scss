@@ -1,0 +1,16 @@
+//  Removes the action buttons at the top,
+//  the breadcrumb at the top,
+//  and the footer for better printing.
+
+
+div#footer {
+  display: none;
+}
+
+nav.actions{
+  display:none
+}
+
+.breadcrumb{
+  display:none
+}
